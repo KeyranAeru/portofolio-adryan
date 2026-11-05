@@ -20,7 +20,7 @@
 }
 
 * { box-sizing: border-box; }
-html { min-width: 320px; scroll-behavior: smooth; scroll-padding-top: 84px; }
+html { min-width: 320px; scroll-behavior: smooth; scroll-padding-top: 84px; scroll-snap-type: y proximity; }
 body { margin: 0; min-width: 320px; }
 body, button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; }

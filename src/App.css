@@ -1,6 +1,7 @@
 #root { width: 100%; overflow: hidden; }
 .portfolio-shell { width: 100%; padding-top: 78px; transition: transform 2.5s cubic-bezier(.22,.75,.25,1); }
 .portfolio-shell.is-shifted { transform: translateX(-100%); }
+.portfolio-shell main > section, .portfolio-shell > .footer { scroll-snap-align: start; scroll-margin-top: 78px; }
 .project-detail-page { position: fixed; z-index: 150; inset: 0; width: 100%; height: 100dvh; overflow-y: auto; background: var(--paper); transform: translateX(100%); transition: transform 2.5s cubic-bezier(.22,.75,.25,1); pointer-events: none; }
 .project-detail-page.is-active { transform: translateX(0); pointer-events: auto; }
 .detail-topbar { position: sticky; z-index: 2; top: 0; min-height: 72px; padding: 0 max(24px, calc((100vw - 1120px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); background: rgba(251,250,248,.96); backdrop-filter: blur(12px); }
@@ -154,6 +155,7 @@
 }
 @media (max-width: 620px) {
   html { scroll-padding-top: 66px; }
+  .portfolio-shell main > section, .portfolio-shell > .footer { scroll-margin-top: 65px; }
   .section-wrap, .nav-wrap { width: calc(100% - 40px); }
   .site-header { height: 65px; }
   .portfolio-shell { padding-top: 65px; }
