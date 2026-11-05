@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #20211f;
+  background: #fbfaf8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --ink: #20211f;
+  --muted: #777873;
+  --line: #e8e6e1;
+  --paper: #fbfaf8;
+  --green: #bfd6c6;
+  --mono: 'DM Mono', monospace;
+  --display: 'Manrope', sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { margin: 0; min-width: 320px; }
+body, button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+button, a { touch-action: manipulation; }
+::selection { color: #20211f; background: #c9dfd0; }
+:focus-visible { outline: 3px solid #5c8b6b; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
