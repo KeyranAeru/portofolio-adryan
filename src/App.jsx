@@ -12,6 +12,10 @@ import lontaraClassPhotoTwo from './assets/foto 2.jpeg'
 import lontaraLearningImage from './assets/belajar.jpeg'
 import lontaraQuizImage from './assets/kuis.jpeg'
 import lontaraImage from './assets/lontara.jpeg'
+import lemburkuImage from './assets/lemburku.png'
+import lemburkuAdminImage from './assets/admin.png'
+import lemburkuAdminAccountsImage from './assets/admin 2.png'
+import lemburkuUserImage from './assets/user.png'
 import './App.css'
 
 const content = {
@@ -48,7 +52,24 @@ const projects = [
   { number: '01', title: 'Web Absen', tags: ['JavaScript', 'MySQL'], image: attendanceImage, alt: 'Portal absensi karyawan dengan formulir kehadiran dan tabel riwayat absensi', gallery: [{ src: attendanceLoginImage, alt: 'Halaman login Web Absen Perusahaan' }, { src: attendanceDashboardImage, alt: 'Dashboard karyawan untuk mengisi dan melihat riwayat absensi' }], linkKind: 'website', url: 'https://absen-perusahaan.site.je/' },
   { number: '02', title: 'Cakap Hanyu', tags: ['Unity', 'C#', 'Game Logic'], image: cakapImage, alt: 'Ilustrasi identitas Game pembelajaran bahasa Cakap Hanyu', gallery: [{ src: cakapQuestionImage, alt: 'Layar soal kuis pilihan ganda berbahasa Mandarin', caption: 'Soal kuis bahasa Mandarin' }, { src: cakapDescriptionImage, alt: 'Layar deskripsi bacaan berbahasa Mandarin dengan tombol audio', caption: 'Deskripsi materi bacaan' }, { src: cakapVocabularyImage, alt: 'Daftar kosakata Mandarin dengan pinyin dan arti bahasa Indonesia', caption: 'Kosakata yang akan dipelajari' }, { src: cakapLessonMenuImage, alt: 'Menu pilihan materi pembelajaran Cakap Hanyu', caption: 'Menu materi pembelajaran' }], linkKind: 'apk', url: `${import.meta.env.BASE_URL}downloads/cakap-hanyu.apk` },
   { number: '03', title: 'Lontara', tags: ['Unity Engine', 'C#', 'Shuffle'], image: lontaraImage, alt: 'Tampilan Game belajar Bahasa Lontara untuk SDN Bulurokeng Makassar', gallery: [{ src: lontaraClassPhotoOne, alt: 'Siswa mencoba game Lontara bersama pendamping', caption: 'Siswa mencoba aplikasi di kelas' }, { src: lontaraClassPhotoTwo, alt: 'Pengenalan game Lontara di depan kelas', caption: 'Pengenalan aplikasi kepada siswa' }, { src: lontaraLearningImage, alt: 'Tampilan kuis pilihan ganda untuk mengenali aksara Lontara', caption: 'Kuis pengenalan aksara' }, { src: lontaraQuizImage, alt: 'Tampilan materi belajar suku kata Lontara GA, GI, GU, GE, dan GO', caption: 'Materi belajar aksara Lontara' }], linkKind: 'apk', url: `${import.meta.env.BASE_URL}downloads/lontara.apk` },
+  { number: '04', title: 'Lemburku', tags: ['React', 'JavaScript', 'CSS'], image: lemburkuImage, alt: 'Dashboard aplikasi untuk mengelola pengajuan dan aktivitas lembur karyawan', gallery: [
+    { src: lemburkuAdminImage, alt: 'Dashboard admin Lemburku dengan ringkasan pengajuan dan pengaturan jadwal kerja', caption: { id: 'Dashboard admin dan pengaturan jadwal kerja', en: 'Admin dashboard and work schedule settings' } },
+    { src: lemburkuAdminAccountsImage, alt: 'Panel admin untuk meninjau pengajuan lembur dan mengelola akun karyawan', caption: { id: 'Persetujuan lembur dan manajemen akun karyawan', en: 'Overtime approvals and employee account management' } },
+    { src: lemburkuUserImage, alt: 'Dashboard karyawan untuk mengajukan lembur dan melihat alur persetujuan', caption: { id: 'Pengajuan lembur dan alur persetujuan karyawan', en: 'Employee overtime request and approval flow' } },
+  ], linkKind: 'website', url: 'https://lemburku.page.gd/dashboard.php', copy: {
+    id: { type: 'APLIKASI WEB', summary: 'Aplikasi web untuk mengelola pengajuan lembur, persetujuan admin, jadwal kerja, dan laporan aktivitas karyawan.', description: 'Lemburku membantu karyawan mengajukan sesi lembur, mencatat progres, dan mengirimkan laporan hasil kerja. Admin dapat meninjau atau menyetujui pengajuan, mengelola akun karyawan, serta mengatur jam dan hari kerja melalui dashboard.', launchNote: 'Tautan website Lemburku belum tersedia.' },
+    en: { type: 'WEB APPLICATION', summary: 'A web app for managing overtime requests, admin approvals, work schedules, and employee activity reports.', description: 'Lemburku lets employees request overtime, track their sessions, and submit work reports. Admins can review and approve requests, manage employee accounts, and configure working hours and days from the dashboard.', launchNote: 'A live link to Lemburku is not available yet.' },
+  } },
 ]
+
+function getProjectCopy(project, language) {
+  const index = projects.indexOf(project)
+  return project.copy?.[language] ?? {
+    summary: content[language].projectSummaries[index],
+    description: content[language].projectDescriptions[index],
+    type: content[language].projectTypes[index],
+  }
+}
 
 const skills = [
   { group: 'FRONTEND', items: 'React · JavaScript · HTML & CSS' },
@@ -73,7 +94,7 @@ function ProjectDetail({ project, active, language, onBack }) {
   const backButtonRef = useRef(null)
   const t = content[language]
   const labels = detailCopy[language]
-  const projectIndex = projects.findIndex((item) => item.number === project?.number)
+  const copy = project ? getProjectCopy(project, language) : null
   const launchLabel = project?.linkKind === 'apk' ? labels.downloadApk : labels.openWebsite
 
   useEffect(() => {
@@ -85,11 +106,11 @@ function ProjectDetail({ project, active, language, onBack }) {
       {project && <>
         <div className="detail-topbar"><button ref={backButtonRef} className="detail-back" type="button" onClick={onBack}><span aria-hidden="true">←</span>{labels.back}</button><span className="brand-name">Adryan Purnama Januar</span></div>
         <main className="detail-main section-wrap">
-          <div className="detail-heading"><p className="eyebrow">{labels.detail} <span>· {project.number} / 03</span></p><h1>{project.title}</h1><p>{t.projectSummaries[projectIndex]}</p></div>
-          <section className="detail-section"><div className="detail-section-label">01 <span>{labels.overview}</span></div><p>{t.projectDescriptions[projectIndex]}</p></section>
-          <section className="detail-section"><div className="detail-section-label">02 <span>{labels.evidence}</span></div><div className="detail-gallery">{(project.gallery ?? [{ src: project.image, alt: project.alt }]).map((image, index) => <figure className="detail-image-frame" key={image.src}><img src={image.src} alt={image.alt} /><figcaption>{image.caption ?? `${project.title}${project.gallery ? ` · ${index + 1} / ${project.gallery.length}` : ''}`}</figcaption></figure>)}</div></section>
+          <div className="detail-heading"><p className="eyebrow">{labels.detail} <span>· {project.number} / {String(projects.length).padStart(2, '0')}</span></p><h1>{project.title}</h1><p>{copy.summary}</p></div>
+          <section className="detail-section"><div className="detail-section-label">01 <span>{labels.overview}</span></div><p>{copy.description}</p></section>
+          <section className="detail-section"><div className="detail-section-label">02 <span>{labels.evidence}</span></div><div className="detail-gallery">{(project.gallery ?? [{ src: project.image, alt: project.alt }]).map((image, index) => <figure className="detail-image-frame" key={image.src}><img src={image.src} alt={image.alt} /><figcaption>{image.caption?.[language] ?? image.caption ?? `${project.title}${project.gallery ? ` · ${index + 1} / ${project.gallery.length}` : ''}`}</figcaption></figure>)}</div></section>
           <section className="detail-section"><div className="detail-section-label">03 <span>{labels.technologies}</span></div><div className="tag-list detail-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></section>
-          <section className="detail-launch"><p className="eyebrow">04 · {labels.launch}</p><h2>{project.title}</h2>{project.url ? <a className="button button-dark" href={project.url} target={project.linkKind === 'website' ? '_blank' : undefined} rel={project.linkKind === 'website' ? 'noreferrer' : undefined} download={project.linkKind === 'apk' ? true : undefined}>{launchLabel}<Arrow diagonal /></a> : <button className="button button-dark detail-link-disabled" type="button" disabled>{project.linkKind === 'apk' ? labels.apkUnavailable : labels.websiteUnavailable}</button>}<p>{project.url ? launchLabel : labels.launchNote}</p></section>
+          <section className="detail-launch"><p className="eyebrow">04 · {labels.launch}</p><h2>{project.title}</h2>{project.url ? <a className="button button-dark" href={project.url} target={project.linkKind === 'website' ? '_blank' : undefined} rel={project.linkKind === 'website' ? 'noreferrer' : undefined} download={project.linkKind === 'apk' ? true : undefined}>{launchLabel}<Arrow diagonal /></a> : <button className="button button-dark detail-link-disabled" type="button" disabled>{project.linkKind === 'apk' ? labels.apkUnavailable : labels.websiteUnavailable}</button>}<p>{project.url ? launchLabel : copy.launchNote ?? labels.launchNote}</p></section>
         </main>
       </>}
     </section>
@@ -160,8 +181,8 @@ function App() {
         </section>
 
         <section className="projects-section" id="proyek">
-          <div className="section-wrap projects-inner"><div className="section-label"><span>02</span> {t.workLabel}</div><div className="projects-heading"><div><h2>{t.projectsTitle} <span>{t.projectsAccent}</span></h2><p>{t.projectsSubtitle}</p></div><span className="project-count">{t.yearRange}&nbsp;&nbsp; / &nbsp;&nbsp;03</span></div>
-            <div className="project-list">{projects.map((project, index) => <button className="project-card" type="button" key={project.number} data-project-number={project.number} onClick={() => openProject(project)} aria-label={`${detailCopy[language].detail}: ${project.title}`}><div className="project-visual has-image"><img className="project-image" src={project.image} alt="" loading="lazy"/><span className="project-number">{project.number} / 03</span><span className="project-type">{t.projectTypes[index]}</span></div><div className="project-info"><div className="project-title-row"><h3>{project.title}</h3><span className="icon-link" aria-hidden="true"><Arrow diagonal /></span></div><p>{t.projectSummaries[index]}</p><div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></button>)}</div>
+          <div className="section-wrap projects-inner"><div className="section-label"><span>02</span> {t.workLabel}</div><div className="projects-heading"><div><h2>{t.projectsTitle} <span>{t.projectsAccent}</span></h2><p>{t.projectsSubtitle}</p></div><span className="project-count">{String(projects.length).padStart(2, '0')} / {language === 'id' ? 'PROYEK' : 'PROJECTS'}</span></div>
+            <div className="project-list">{projects.map((project) => { const copy = getProjectCopy(project, language); return <button className="project-card" type="button" key={project.number} data-project-number={project.number} onClick={() => openProject(project)} aria-label={`${detailCopy[language].detail}: ${project.title}`}><div className="project-visual has-image"><img className="project-image" src={project.image} alt="" loading="lazy"/><span className="project-number">{project.number} / {String(projects.length).padStart(2, '0')}</span><span className="project-type">{copy.type}</span></div><div className="project-info"><div className="project-title-row"><h3>{project.title}</h3><span className="icon-link" aria-hidden="true"><Arrow diagonal /></span></div><p>{copy.summary}</p><div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></button> })}</div>
             <p className="project-note">{t.projectNote}</p>
           </div>
         </section>

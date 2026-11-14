@@ -106,6 +106,7 @@
 .projects-heading > div > p, .skills-heading > p { color: #797a73; font-size: 12px; margin: 12px 0 0; }
 .project-count { color: #85867f; font-size: 8px; padding-bottom: 4px; }
 .project-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+.project-card:nth-child(4):last-child { grid-column: 2; }
 .project-card { min-width: 0; width: 100%; padding: 0; display: block; appearance: none; color: inherit; text-align: left; font: inherit; cursor: pointer; background: #fbfaf8; border: 1px solid #e7e5df; transition: transform .25s, box-shadow .25s; }
 .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(40,43,37,.07); }
 .project-visual { height: 198px; margin: 10px 10px 0; position: relative; display: grid; place-items: center; overflow: hidden; }
@@ -174,5 +175,5 @@
   .footer { min-height: 90px; display: grid; grid-template-columns: 35px 1fr; gap: 3px 12px; padding-top: 15px; padding-bottom: 15px; }.footer .brand { grid-row: span 2; }.footer > span { font-size: 9px; }.back-top { grid-column: 2; font-size: 7px; }
   .detail-topbar { min-height: 60px; padding: 0 20px; }.detail-topbar .brand-name { display: none; }.detail-back { font-size: 11px; }.detail-main { padding-top: 43px; padding-bottom: 60px; }.detail-heading { margin-bottom: 42px; }.detail-heading h1 { font-size: 42px; }.detail-heading > p:last-child { font-size: 13px; }.detail-section { display: block; padding: 24px 0; }.detail-section-label { margin-bottom: 17px; }.detail-section > p { font-size: 12px; }.detail-gallery { grid-template-columns: 1fr; gap: 12px; }.detail-image-frame { padding: 7px; }.detail-image-frame img { max-height: 54vh; }.detail-image-frame figcaption { font-size: 8px; }.detail-launch { margin-top: 32px; padding: 26px 20px; }
 }
-
+@media (max-width: 620px) { .project-card:nth-child(4):last-child { grid-column: auto; } }
 @media (prefers-reduced-motion: reduce) { .portfolio-shell, .project-detail-page { transition: none; } }
