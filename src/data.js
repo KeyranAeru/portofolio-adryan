@@ -26,8 +26,8 @@ export const T = {
   a_exp:{id:"Pengalaman & pendidikan",en:"Experience & education"},
   a_skills:{id:"Skill & tech stack",en:"Skills & tech stack"},
   a_goal:{id:"Tujuan karier",en:"Career goals"},
-  a_goal_txt:{id:"[Contoh] Berkembang sebagai fullstack developer, membangun produk yang berdampak bersama tim yang saling belajar.",
-              en:"[Example] Grow as a fullstack developer, building impactful products with a team that learns together."},
+  a_goal_txt:{id:"Berkembang sebagai fullstack developer, membangun produk yang berdampak bersama tim yang saling belajar.",
+              en:"Grow as a fullstack developer, building impactful products with a team that learns together."},
 
   p_title:{id:"Proyek",en:"Projects"}, p_lead:{id:"Beberapa karya yang pernah saya buat.",en:"Some things I’ve built."},
   e_title:{id:"Bukti kegiatan",en:"Proof of work"}, e_lead:{id:"Dokumentasi dari pengalaman magang, freelance, dan kegiatan lainnya.",en:"Documentation from my internship, freelance work, and other activities."},
