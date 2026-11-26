@@ -41,7 +41,7 @@ export const FOCUS = [
 
 export const EXP = [
   {when:{id:"Agustus 2026",en:"August 2026"}, t:{id:"Freelance Game Developer",en:"Freelance Game Developer"}, d:{id:"Mengembangkan game edukasi 2D “Cakap Hanyu” untuk belajar bahasa Mandarin.",en:"Built “Cakap Hanyu”, a 2D educational game for learning Mandarin."}},
-  {when:{id:"Agu – Nov 2024",en:"Aug – Nov 2024"}, t:{id:"Magang 2D & 3D Animator · MSV Studio, Sleman",en:"2D & 3D Animator Intern · MSV Studio, Sleman"}, d:{id:"[Tambahkan tugas dan pencapaianmu di sini.]",en:"[Add your tasks and achievements here.]"}},
+  {when:{id:"Agu – Nov 2024",en:"Aug – Nov 2024"}, t:{id:"Magang 2D & 3D Animator · MSV Studio, Sleman",en:"2D & 3D Animator Intern · MSV Studio, Sleman"}, d:{id:"Membantu proses produksi animasi 2D, menyiapkan aset visual, serta berkolaborasi dengan tim animator selama proses produksi di MSV Studio.",en:"Assisted with 2D animation production at MSV Studio, contributing to visual assets and collaborating with the animation team throughout the production process."}},
   {when:{id:"2022 – 2026",en:"2022 – 2026"}, t:{id:"S1 Rekayasa Perangkat Lunak · Universitas Dipa Makassar",en:"B.Sc. Software Engineering · Universitas Dipa Makassar"}, d:{id:"IPK 3,52 (Cum Laude).",en:"GPA 3.52 (Cum Laude)."}}
 ];
 
