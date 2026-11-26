@@ -1,14 +1,12 @@
-import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
-const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
-const isUserSite = repositoryName?.endsWith('.github.io')
-const base = process.env.GITHUB_ACTIONS === 'true' && repositoryName && !isUserSite
-  ? `/${repositoryName}/`
-  : '/'
-
+// base './' membuat hasil build bisa dibuka dari sub-folder (mis. GitHub Pages)
 export default defineConfig({
-  base,
+  base: './',
   plugins: [react()],
+  build: {
+    rollupOptions: { output: { manualChunks: { three: ['three'] } } },
+    chunkSizeWarningLimit: 700,
+  },
 })
