@@ -12,7 +12,7 @@ export const T = {
   n_proof:{id:"Bukti",en:"Proof"}, n_contact:{id:"Kontak",en:"Contact"}, n_hire:{id:"Hubungi saya",en:"Hire me"},
 
   h_title:{id:"Halo, saya Adryan.",en:"Hi, I’m Adryan."},
-  h_sub:{id:"Saya membuat web.",en:"I build the web."},
+  h_sub:{id:"Saya Web Developer.",en:"I'm a Web Developer."},
   h_desc:{id:"Lulusan Rekayasa Perangkat Lunak dari Makassar. Saya membuat aplikasi web fullstack dengan PHP & MySQL.",
           en:"Software Engineering graduate from Makassar. I build fullstack web apps with PHP & MySQL."},
   h_cta:{id:"Lihat proyek saya",en:"See my projects"},
